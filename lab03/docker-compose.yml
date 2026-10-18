@@ -1,0 +1,14 @@
+services:
+  currency-cron:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: lab03-currency-cron
+    env_file:
+      - ../.env
+    environment:
+      TZ: Europe/Chisinau
+      API_URL: http://host.docker.internal:8080/
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped

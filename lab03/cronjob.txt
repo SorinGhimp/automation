@@ -1,0 +1,6 @@
+SHELL=/bin/sh
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+TZ=Europe/Chisinau
+
+0 6 * * * root cd /app && /usr/local/bin/python /app/lab03/currency_exchange_rate.py MDL EUR "$(date -d yesterday +\%F)" >> /var/log/cron.log 2>&1
+0 17 * * 5 root cd /app && /usr/local/bin/python /app/lab03/currency_exchange_rate.py MDL USD "$(date -d '7 days ago' +\%F)" >> /var/log/cron.log 2>&1
